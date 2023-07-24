@@ -8,11 +8,11 @@ services:
             write_ytdl_config: 'true'
         restart: always
         volumes:
-            - ./appdata:/app/appdata
-            - ./audio:/app/audio
-            - ./video:/app/video
-            - ./subscriptions:/app/subscriptions
-            - ./users:/app/users
+            - /data/youtubedl/appdata:/app/appdata
+            - /data/youtubedl/audio:/app/audio
+            - /data/youtubedl/video:/app/video
+            - /data/youtubedl/subscriptions:/app/subscriptions
+            - /data/youtubedl/users:/app/users
         ports:
             - "8998:17442"
         image: tzahi12345/youtubedl-material:latest
@@ -25,4 +25,4 @@ services:
         container_name: mongo-db
         restart: always
         volumes:
-            - ./db/:/data/db
+            - /data/youtubedl/db/:/data/db
