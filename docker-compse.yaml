@@ -1,28 +1,10 @@
-version: "2"
+version: "3"
 services:
-    ytdl_material:
-        environment: 
-            ALLOW_CONFIG_MUTATIONS: 'true'
-            ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
-            ytdl_use_local_db: 'false'
-            write_ytdl_config: 'true'
-        restart: always
-        volumes:
-            - /data/youtubedl/appdata:/app/appdata
-            - /data/youtubedl/audio:/app/audio
-            - /data/youtubedl/video:/app/video
-            - /data/youtubedl/subscriptions:/app/subscriptions
-            - /data/youtubedl/users:/app/users
-        ports:
-            - "8998:17442"
-        image: tzahi12345/youtubedl-material:latest
-    ytdl-mongo-db:
-        image: mongo:4.4.18
-        ports:
-            - "27017:27017"
-        logging:
-            driver: "none"          
-        container_name: mongo-db
-        restart: always
-        volumes:
-            - /data/youtubedl/db/:/data/db
+  metube:
+    image: ghcr.io/alexta69/metube
+    container_name: metube
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    volumes:
+      - /data/komga/data/pendrive/youtube:/downloads
