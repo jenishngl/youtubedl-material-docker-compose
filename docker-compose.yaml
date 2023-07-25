@@ -9,4 +9,4 @@ services:
     volumes:
       - /data/komga/data/pendrive/youtube:/downloads
     environment:
-      - 'YTDL_OPTIONS={"verbose": True}'
+      - YTDL_OPTIONS: '{"verbose": true}'
